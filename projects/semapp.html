@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SemApp | Project Showcase</title>
+    <meta
+      name="description"
+      content="SemApp is a Next.js web application built with Supabase and deployed on Vercel."
+    />
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --bg-alt: #ffffff;
+        --panel: rgba(255, 255, 255, 0.78);
+        --panel-strong: rgba(255, 255, 255, 0.92);
+        --text: #1d1d1f;
+        --muted: #6e6e73;
+        --line: rgba(0, 0, 0, 0.08);
+        --shadow: rgba(15, 15, 15, 0.08);
+        --blue: #0a84ff;
+        --blue-soft: #eaf5ff;
+        --green: #5ac8fa;
+        --purple: #7a6efc;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+        background: linear-gradient(180deg, #fafafb, var(--bg));
+        color: var(--text);
+      }
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; }
+
+      .container {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(20px);
+        background: rgba(250, 250, 252, 0.76);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 70px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+      }
+
+      .brand-mark {
+        width: 26px;
+        height: 26px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #111827, #374151);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .brand-mark::before {
+        content: "";
+        position: absolute;
+        inset: 6px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--blue), var(--purple));
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .nav-links a:hover { color: var(--text); }
+
+      .nav-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0.7rem 1rem;
+        border-radius: 999px;
+        background: rgba(17, 24, 39, 0.05);
+        border: 1px solid rgba(0,0,0,0.04);
+        font-weight: 600;
+      }
+
+      .hero {
+        padding: 90px 0 50px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 42px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.76rem;
+        color: var(--muted);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #2dd36f;
+        box-shadow: 0 0 0 6px rgba(45, 211, 111, 0.08);
+      }
+
+      h1 {
+        margin: 20px 0 18px;
+        font-size: clamp(3.3rem, 5vw, 6rem);
+        line-height: 0.95;
+        letter-spacing: -0.08em;
+        font-weight: 600;
+      }
+
+      .hero-copy p {
+        margin: 0;
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.75;
+      }
+
+      .hero-actions {
+        margin-top: 28px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0.9rem 1.5rem;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+
+      .button-primary {
+        background: #111827;
+        color: #fff;
+        box-shadow: 0 12px 24px rgba(17, 24, 39, 0.14);
+      }
+
+      .button-secondary {
+        background: rgba(255,255,255,0.7);
+        border: 1px solid rgba(0,0,0,0.06);
+      }
+
+      .tech-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 26px;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 0.58rem 0.8rem;
+        background: rgba(10,132,255,0.08);
+        border: 1px solid rgba(10,132,255,0.12);
+        color: #1d1d1f;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .hero-art {
+        position: relative;
+      }
+
+      .device {
+        position: relative;
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(240,242,246,0.9));
+        border-radius: 32px;
+        box-shadow: 0 30px 80px var(--shadow);
+        overflow: hidden;
+      }
+
+      .device-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 22px 12px;
+        color: var(--muted);
+        font-size: 0.76rem;
+      }
+
+      .window-dots {
+        display: flex;
+        gap: 8px;
+      }
+
+      .window-dots span {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: block;
+        background: rgba(0,0,0,0.08);
+      }
+
+      .app-window {
+        margin: 0 18px 18px;
+        min-height: 500px;
+        border-radius: 26px;
+        background: linear-gradient(180deg, #111827, #0d1723);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .app-window::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 25% 15%, rgba(125,211,252,0.22), transparent 30%), radial-gradient(circle at 80% 70%, rgba(167,139,250,0.18), transparent 32%);
+      }
+
+      .app-window-inner {
+        position: relative;
+        z-index: 1;
+        padding: 20px 16px 18px;
+      }
+
+      .app-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 6px 4px 18px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 999px;
+        padding: 0.52rem 0.78rem;
+        font-size: 0.72rem;
+        color: rgba(255,255,255,0.72);
+      }
+
+      .badge::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #5ac8fa;
+      }
+
+      .screen-card {
+        padding: 22px 18px;
+        border-radius: 24px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .screen-card h3 {
+        margin: 0 0 18px;
+        color: #f5f5f7;
+        font-size: clamp(2rem, 2.8vw, 2.7rem);
+        letter-spacing: -0.06em;
+      }
+
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .mini-box {
+        min-height: 110px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, rgba(125,211,252,0.18), rgba(167,139,250,0.18));
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .stat {
+        padding: 14px 12px;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .stat strong {
+        display: block;
+        color: #fff;
+        font-size: 1.2rem;
+      }
+
+      .stat span {
+        color: rgba(255,255,255,0.68);
+        font-size: 0.71rem;
+      }
+
+      .section {
+        padding: 36px 0 18px;
+      }
+
+      .section-tag {
+        display: inline-block;
+        margin-bottom: 18px;
+        color: var(--muted);
+        font-size: 0.76rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 26px;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: clamp(2.2rem, 3vw, 4rem);
+        line-height: 1.05;
+        letter-spacing: -0.06em;
+      }
+
+      .section-header p {
+        margin: 0;
+        max-width: 540px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .feature-card {
+        padding: 24px 20px;
+        background: rgba(255,255,255,0.7);
+        border: 1px solid rgba(0,0,0,0.05);
+        border-radius: 24px;
+        box-shadow: 0 16px 30px rgba(17,17,17,0.03);
+      }
+
+      .feature-card .icon {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: rgba(17,24,39,0.05);
+        margin-bottom: 18px;
+        font-weight: 700;
+      }
+
+      .feature-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.35rem;
+        letter-spacing: -0.04em;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .metrics-panel {
+        margin-top: 24px;
+        background: linear-gradient(135deg, rgba(13,23,35,0.97), rgba(15,17,23,0.98));
+        border-radius: 30px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.06);
+        color: #eef3ff;
+      }
+
+      .metrics-panel-inner {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        min-height: 420px;
+      }
+
+      .metrics-copy {
+        padding: 38px 34px;
+      }
+
+      .metrics-copy .small {
+        color: rgba(255,255,255,0.7);
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .metrics-copy h3 {
+        margin: 16px 0 14px;
+        font-size: clamp(2.3rem, 3vw, 3.5rem);
+        line-height: 1.02;
+        letter-spacing: -0.06em;
+      }
+
+      .metrics-copy p {
+        margin: 0 0 22px;
+        color: rgba(255,255,255,0.72);
+        line-height: 1.75;
+      }
+
+      .bullet-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 12px;
+      }
+
+      .bullet-list li {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+      }
+
+      .bullet-list li::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #7dd3fc, #c4b5fd);
+      }
+
+      .metrics-visual {
+        position: relative;
+        border-left: 1px solid rgba(255,255,255,0.06);
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)),
+          linear-gradient(135deg, rgba(125,211,252,0.12), rgba(167,139,250,0.14));
+      }
+
+      .metrics-visual::before {
+        content: "";
+        position: absolute;
+        inset: 44px 52px 44px 52px;
+        border-radius: 32px;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(255,255,255,0.04);
+      }
+
+      .metrics-visual::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        height: 52%;
+        border-radius: 28px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
+        border: 1px solid rgba(255,255,255,0.12);
+      }
+
+      .cta {
+        padding: 64px 0 90px;
+      }
+
+      .cta-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 26px;
+        padding: 30px 28px;
+        border-radius: 30px;
+        background: linear-gradient(135deg, rgba(240,244,248,0.9), rgba(255,255,255,0.8));
+        border: 1px solid rgba(0,0,0,0.05);
+      }
+
+      .cta-box h3 {
+        margin: 0;
+        font-size: clamp(2rem, 3vw, 3.4rem);
+        letter-spacing: -0.06em;
+      }
+
+      .cta-box p {
+        margin: 8px 0 0;
+        color: var(--muted);
+      }
+
+      footer {
+        border-top: 1px solid rgba(0,0,0,0.05);
+        padding: 24px 0 38px;
+      }
+
+      .footer-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .feature-grid,
+        .metrics-panel-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .section-header,
+        .cta-box,
+        .footer-row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+          padding: 12px 0;
+          gap: 10px;
+        }
+
+        .nav-links {
+          width: 100%;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 12px 18px;
+        }
+
+        .hero {
+          padding-top: 60px;
+        }
+
+        .stats-row,
+        .mini-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a href="#top" class="brand" aria-label="SemApp home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>SemApp</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#overview">Overview</a>
+          <a href="#features">Features</a>
+          <a href="#results">Results</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a href="#contact" class="nav-button">View Live</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" id="overview">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Launch-ready product</span>
+            <h1>SemApp</h1>
+            <p>
+              A modern Next.js web application built for clarity, speed, and scalable product experiences.
+              The platform combines thoughtful user flows with a reliable backend powered by Supabase and is deployed on Vercel for seamless global delivery.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#results">See Results</a>
+              <a class="button button-secondary" href="#contact">Discuss the project</a>
+            </div>
+
+            <div class="tech-list" aria-label="Tech stack used">
+              <span class="chip">Next.js</span>
+              <span class="chip">Supabase</span>
+              <span class="chip">Vercel</span>
+              <span class="chip">PostgreSQL</span>
+            </div>
+          </div>
+
+          <div class="hero-art" aria-label="SemApp dashboard preview">
+            <div class="device">
+              <div class="device-topbar">
+                <span>9:41</span>
+                <div class="window-dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+
+              <div class="app-window">
+                <div class="app-window-inner">
+                  <div class="app-header">
+                    <span class="badge">Production app</span>
+                    <span style="color: rgba(255,255,255,0.68); font-size: 0.72rem;">Live</span>
+                  </div>
+
+                  <div class="screen-card">
+                    <h3>Insights</h3>
+                    <div class="mini-grid">
+                      <div class="mini-box"></div>
+                      <div class="mini-box"></div>
+                    </div>
+                  </div>
+
+                  <div class="stats-row">
+                    <div class="stat">
+                      <strong>1.2k</strong>
+                      <span>Users</span>
+                    </div>
+                    <div class="stat">
+                      <strong>99.9%</strong>
+                      <span>Uptime</span>
+                    </div>
+                    <div class="stat">
+                      <strong>2.3s</strong>
+                      <span>Load</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="section">
+        <div class="container">
+          <span class="section-tag">What it does</span>
+          <div class="section-header">
+            <h2>Built to be fast, reliable, and easy to grow.</h2>
+            <p>
+              This project was designed to deliver a clean user experience while giving the product a robust backend foundation for real-world usage.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="icon">01</div>
+              <h3>Modern frontend</h3>
+              <p>Built with Next.js to deliver a responsive, polished interface with strong performance and clean DX.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="icon">02</div>
+              <h3>Supabase backend</h3>
+              <p>Leveraged Supabase for authentication, data storage, and a scalable database layer without heavy infrastructure overhead.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="icon">03</div>
+              <h3>Vercel deployment</h3>
+              <p>Deployed on Vercel for quick iteration, production-grade hosting, and frictionless continuous delivery.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="results" class="section">
+        <div class="container">
+          <div class="metrics-panel">
+            <div class="metrics-panel-inner">
+              <div class="metrics-copy">
+                <span class="small">Project outcome</span>
+                <h3>Built for a real product workflow.</h3>
+                <p>
+                  SemApp was created as a practical full-stack application, combining frontend polish with backend reliability to deliver an experience that feels production-ready from day one.
+                </p>
+
+                <ul class="bullet-list">
+                  <li>Scalable data architecture with Supabase</li>
+                  <li>Fast global deployment through Vercel</li>
+                  <li>Clean UX built for usability and growth</li>
+                </ul>
+              </div>
+
+              <div class="metrics-visual" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="cta">
+        <div class="container">
+          <div class="cta-box">
+            <div>
+              <h3>Want to build something similar?</h3>
+              <p>I build modern web apps with strong product thinking and clean technical execution.</p>
+            </div>
+            <a href="mailto:hello@example.com" class="button button-primary">hello@example.com</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-row">
+        <div>© 2026 SemApp</div>
+        <div>Next.js × Supabase × Vercel</div>
+      </div>
+    </footer>
+  </body>
+</html>
