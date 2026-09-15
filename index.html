@@ -10,122 +10,105 @@
     />
     <style>
       :root {
-        --bg: #081120;
-        --bg-soft: #101c2e;
-        --panel: rgba(15, 24, 39, 0.8);
-        --panel-strong: rgba(19, 31, 50, 0.95);
-        --card: #121d2c;
-        --line: rgba(148, 163, 184, 0.2);
-        --text: #ecf3ff;
-        --muted: #9bb0d0;
-        --primary: #7dd3fc;
-        --primary-strong: #38bdf8;
-        --accent: #a78bfa;
-        --success: #86efac;
-        --shadow: rgba(8, 17, 32, 0.55);
+        --bg: #f5f5f7;
+        --bg-soft: #ffffff;
+        --panel: rgba(255, 255, 255, 0.76);
+        --panel-strong: rgba(255, 255, 255, 0.9);
+        --card: #ffffff;
+        --line: rgba(0, 0, 0, 0.07);
+        --text: #1d1d1f;
+        --muted: #6e6e73;
+        --primary: #0a84ff;
+        --accent: #7a6efc;
+        --success: #30d158;
+        --shadow: rgba(0, 0, 0, 0.08);
       }
 
-      * {
-        box-sizing: border-box;
-      }
+      * { box-sizing: border-box; }
 
-      html {
-        scroll-behavior: smooth;
-      }
+      html { scroll-behavior: smooth; }
 
       body {
         margin: 0;
-        font-family: Inter, "Segoe UI", sans-serif;
-        background:
-          radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 22%),
-          radial-gradient(circle at bottom right, rgba(167, 139, 250, 0.18), transparent 30%),
-          var(--bg);
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+        background: linear-gradient(180deg, #fafafb, var(--bg));
         color: var(--text);
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      img {
-        max-width: 100%;
-      }
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; }
 
       .container {
-        width: min(1180px, calc(100% - 32px));
+        width: min(1200px, calc(100% - 32px));
         margin: 0 auto;
       }
 
       header {
         position: sticky;
         top: 0;
-        z-index: 20;
-        backdrop-filter: blur(16px);
-        background: rgba(8, 17, 32, 0.7);
-        border-bottom: 1px solid var(--line);
+        z-index: 30;
+        backdrop-filter: blur(18px);
+        background: rgba(250, 250, 252, 0.72);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
       }
 
       .nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        min-height: 76px;
+        min-height: 70px;
       }
 
       .brand {
         display: inline-flex;
         align-items: center;
         gap: 12px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: -0.04em;
       }
 
       .brand-mark {
         display: grid;
         place-items: center;
-        width: 36px;
-        height: 36px;
-        border-radius: 12px;
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        color: #06111c;
-        font-weight: 800;
+        width: 28px;
+        height: 28px;
+        border-radius: 9px;
+        background: linear-gradient(135deg, #111827, #3b4252);
+        color: #fff;
+        font-size: 0.68rem;
+        font-weight: 700;
       }
 
       .nav-links {
         display: flex;
         align-items: center;
-        gap: 28px;
+        gap: 30px;
         color: var(--muted);
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
 
-      .nav-links a:hover {
-        color: var(--text);
-      }
+      .nav-links a:hover { color: var(--text); }
 
       .nav-cta {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 0.85rem 1.2rem;
-        border: 1px solid rgba(125, 211, 252, 0.35);
+        min-height: 42px;
+        padding: 0.75rem 1rem;
         border-radius: 999px;
-        background: rgba(125, 211, 252, 0.08);
-        color: var(--text);
+        background: rgba(17, 24, 39, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.05);
         font-weight: 600;
       }
 
       .hero {
-        padding: 88px 0 36px;
+        padding: 86px 0 40px;
       }
 
       .hero-grid {
         display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 46px;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 42px;
         align-items: center;
       }
 
@@ -135,10 +118,10 @@
         gap: 10px;
         padding: 0.5rem 0.8rem;
         border-radius: 999px;
-        background: rgba(125, 211, 252, 0.08);
-        border: 1px solid rgba(125, 211, 252, 0.25);
+        background: rgba(10, 132, 255, 0.08);
+        border: 1px solid rgba(10, 132, 255, 0.12);
         color: var(--primary);
-        font-size: 0.78rem;
+        font-size: 0.76rem;
         letter-spacing: 0.12em;
         text-transform: uppercase;
       }
@@ -149,18 +132,19 @@
         height: 8px;
         border-radius: 50%;
         background: var(--success);
-        box-shadow: 0 0 14px rgba(134, 239, 172, 0.8);
+        box-shadow: 0 0 0 6px rgba(48, 209, 88, 0.08);
       }
 
       h1 {
-        margin: 22px 0 18px;
-        font-size: clamp(3rem, 5vw, 5.2rem);
-        line-height: 0.98;
-        letter-spacing: -0.06em;
+        margin: 20px 0 18px;
+        font-size: clamp(3.3rem, 5vw, 6rem);
+        line-height: 0.94;
+        letter-spacing: -0.08em;
+        font-weight: 600;
       }
 
       .headline-highlight {
-        background: linear-gradient(135deg, var(--primary), var(--accent));
+        background: linear-gradient(135deg, #0a84ff, #7a6efc);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -168,42 +152,40 @@
 
       .lead {
         max-width: 620px;
-        color: var(--muted);
         font-size: 1.08rem;
         line-height: 1.7;
+        color: var(--muted);
       }
 
       .actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 16px;
-        margin-top: 30px;
+        gap: 14px;
+        margin-top: 28px;
       }
 
       .button {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 52px;
-        padding: 0.9rem 1.5rem;
+        min-height: 50px;
+        padding: 0.9rem 1.35rem;
         border-radius: 999px;
-        font-weight: 700;
+        font-weight: 600;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
 
-      .button:hover {
-        transform: translateY(-2px);
-      }
+      .button:hover { transform: translateY(-1px); }
 
       .button-primary {
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        color: #06121d;
-        box-shadow: 0 18px 35px rgba(86, 169, 255, 0.2);
+        background: #111827;
+        color: #fff;
+        box-shadow: 0 18px 28px rgba(17, 24, 39, 0.12);
       }
 
       .button-secondary {
-        border: 1px solid var(--line);
-        background: rgba(148, 163, 184, 0.04);
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(0, 0, 0, 0.06);
         color: var(--text);
       }
 
@@ -217,136 +199,158 @@
       .mini-socials a {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        padding: 0.7rem 0.9rem;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0.65rem 0.9rem;
         border-radius: 999px;
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.01);
+        background: rgba(255, 255, 255, 0.55);
+        border: 1px solid rgba(0, 0, 0, 0.05);
         color: var(--muted);
-        font-size: 0.9rem;
+        font-size: 0.88rem;
       }
 
-      .hero-panel {
+      .hero-visual {
         position: relative;
       }
 
-      .panel-shell {
-        padding: 24px;
+      .device-shell {
+        position: relative;
+        min-height: 560px;
         border: 1px solid var(--line);
-        border-radius: 28px;
-        background: linear-gradient(180deg, rgba(17, 27, 41, 0.9), rgba(10, 18, 30, 0.9));
-        box-shadow: 0 30px 60px var(--shadow);
+        border-radius: 32px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(244,245,247,0.9));
+        box-shadow: 0 28px 80px var(--shadow);
+        overflow: hidden;
       }
 
-      .window-bar {
-        display: flex;
-        gap: 8px;
-        padding-bottom: 18px;
-      }
-
-      .window-bar span {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        display: block;
-      }
-
-      .window-bar span:nth-child(1) { background: #ff5f57; }
-      .window-bar span:nth-child(2) { background: #febc2f; }
-      .window-bar span:nth-child(3) { background: #28c840; }
-
-      .profile-card {
-        border-radius: 22px;
-        padding: 24px;
-        border: 1px solid var(--line);
-        background:
-          linear-gradient(180deg, rgba(125, 211, 252, 0.12), rgba(167, 139, 250, 0.08)),
-          rgba(11, 17, 28, 0.7);
-      }
-
-      .profile-top {
+      .status-bar {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 20px;
-      }
-
-      .avatar {
-        width: 78px;
-        height: 78px;
-        border-radius: 22px;
-        display: grid;
-        place-items: center;
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        color: #06121d;
-        font-size: 1.7rem;
-        font-weight: 800;
-      }
-
-      .availability {
-        color: var(--success);
-        font-size: 0.8rem;
-        padding: 0.55rem 0.75rem;
-        border-radius: 999px;
-        background: rgba(134, 239, 172, 0.08);
-        border: 1px solid rgba(134, 239, 172, 0.2);
-      }
-
-      .profile-card h3 {
-        margin: 0 0 10px;
-        font-size: 1.5rem;
-      }
-
-      .profile-card p {
-        margin: 0;
+        padding: 18px 22px 12px;
         color: var(--muted);
-        line-height: 1.7;
+        font-size: 0.76rem;
       }
 
-      .tag-list {
+      .dots {
         display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 18px;
+        gap: 8px;
       }
 
-      .tag {
+      .dots span {
+        display: block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(0,0,0,0.08);
+      }
+
+      .screen {
+        margin: 8px 18px 18px;
+        min-height: 470px;
+        border-radius: 26px;
+        background: linear-gradient(180deg, #111827, #0d1723);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .screen::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 25% 15%, rgba(125,211,252,0.25), transparent 28%), radial-gradient(circle at 80% 70%, rgba(167,139,250,0.18), transparent 32%);
+      }
+
+      .screen-inner {
+        position: relative;
+        z-index: 1;
+        padding: 20px 18px 18px;
+      }
+
+      .product-pill {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 0.55rem 0.75rem;
-        border: 1px solid var(--line);
-        background: rgba(148, 163, 184, 0.06);
+        padding: 0.48rem 0.8rem;
         border-radius: 999px;
-        color: var(--muted);
-        font-size: 0.78rem;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.08);
+        color: rgba(255,255,255,0.72);
+        font-size: 0.72rem;
+      }
+
+      .product-pill::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #5ac8fa;
+      }
+
+      .product-card {
+        margin-top: 24px;
+        padding: 24px 20px 18px;
+        border-radius: 24px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .product-top {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+
+      .product-top h3 {
+        margin: 0;
+        font-size: clamp(2rem, 2.5vw, 2.7rem);
+        letter-spacing: -0.07em;
+        color: #f5f5f7;
+      }
+
+      .product-top span {
+        color: rgba(255,255,255,0.7);
+        font-size: 0.8rem;
+      }
+
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .mini-card {
+        min-height: 120px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, rgba(125,211,252,0.18), rgba(167,139,250,0.18));
+        border: 1px solid rgba(255,255,255,0.08);
       }
 
       .stats {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-        margin-top: 28px;
+        gap: 16px;
+        margin-top: 26px;
       }
 
       .stat {
-        padding: 22px 16px;
-        border: 1px solid var(--line);
+        padding: 15px 12px;
         border-radius: 18px;
-        background: rgba(16, 25, 38, 0.5);
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.06);
       }
 
       .stat strong {
         display: block;
-        font-size: 1.8rem;
-        margin-bottom: 8px;
+        color: #fff;
+        font-size: 1.2rem;
       }
 
       .stat span {
-        color: var(--muted);
-        font-size: 0.8rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+        color: rgba(255,255,255,0.66);
+        font-size: 0.72rem;
       }
 
       section {
@@ -354,11 +358,11 @@
       }
 
       .section-kicker {
-        margin: 0 0 14px;
-        color: var(--primary);
-        font-size: 0.8rem;
-        text-transform: uppercase;
+        margin: 0 0 16px;
+        color: var(--muted);
+        font-size: 0.78rem;
         letter-spacing: 0.12em;
+        text-transform: uppercase;
       }
 
       .section-heading {
@@ -371,8 +375,9 @@
 
       .section-heading h2 {
         margin: 0;
-        font-size: clamp(2rem, 3vw, 3rem);
-        letter-spacing: -0.05em;
+        font-size: clamp(2.2rem, 3vw, 4rem);
+        line-height: 1.05;
+        letter-spacing: -0.06em;
       }
 
       .section-heading p {
@@ -384,104 +389,132 @@
 
       .card-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
       }
 
-      .project-card,
-      .feature-card,
-      .about-card {
-        background: linear-gradient(180deg, rgba(17, 27, 41, 0.9), rgba(12, 18, 28, 0.9));
-        border: 1px solid var(--line);
-        border-radius: 22px;
+      .project-card {
+        background: rgba(255,255,255,0.7);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: 24px;
         overflow: hidden;
+        box-shadow: 0 18px 30px rgba(17,17,17,0.03);
+      }
+
+      .project-card a {
+        display: block;
+        height: 100%;
       }
 
       .project-visual {
-        height: 200px;
-        background: linear-gradient(135deg, rgba(125, 211, 252, 0.22), rgba(167, 139, 250, 0.22));
-        border-bottom: 1px solid var(--line);
+        height: 210px;
         position: relative;
+        background: linear-gradient(135deg, #e9efff, #f7f7f7 48%, #dfe9ff);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
       }
 
       .project-visual::before,
       .project-visual::after {
         content: "";
         position: absolute;
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        border: 1px solid rgba(0,0,0,0.05);
       }
 
       .project-visual::before {
-        inset: 30px 40px 30px 40px;
+        width: 76%;
+        height: 58%;
+        left: 12%;
+        top: 19%;
+        background: rgba(255,255,255,0.42);
       }
 
       .project-visual::after {
-        inset: 54px 86px 54px 86px;
-        background: rgba(125, 211, 252, 0.18);
+        width: 50%;
+        height: 38%;
+        left: 25%;
+        top: 29%;
+        background: linear-gradient(135deg, rgba(17,24,39,0.14), rgba(113,164,255,0.18));
       }
 
       .project-body {
-        padding: 22px 20px 24px;
+        padding: 20px 18px 22px;
       }
 
       .meta {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 10px;
-        margin-bottom: 14px;
+        gap: 8px;
+        margin-bottom: 12px;
       }
 
       .meta span {
-        color: var(--primary);
-        font-size: 0.75rem;
-        letter-spacing: 0.1em;
+        color: var(--muted);
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
       }
 
       .meta strong {
         color: var(--muted);
-        font-size: 0.8rem;
+        font-size: 0.75rem;
       }
 
       .project-body h3 {
         margin: 0 0 10px;
-        font-size: 1.4rem;
+        font-size: 1.55rem;
+        letter-spacing: -0.05em;
       }
 
       .project-body p {
-        margin: 0;
+        margin: 0 0 16px;
         color: var(--muted);
         line-height: 1.7;
+      }
+
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 0.7rem 0.9rem;
+        border-radius: 999px;
+        background: rgba(17,24,39,0.04);
+        border: 1px solid rgba(0,0,0,0.04);
+        color: var(--text);
+        font-weight: 600;
+        font-size: 0.82rem;
       }
 
       .feature-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
+        gap: 20px;
       }
 
       .feature-card {
-        padding: 24px 22px;
+        padding: 22px 18px;
+        border-radius: 24px;
+        background: rgba(255,255,255,0.68);
+        border: 1px solid rgba(0,0,0,0.05);
       }
 
       .icon {
-        width: 48px;
-        height: 48px;
+        width: 46px;
+        height: 46px;
         display: grid;
         place-items: center;
-        border-radius: 16px;
-        background: linear-gradient(135deg, rgba(125, 211, 252, 0.18), rgba(167, 139, 250, 0.18));
-        color: var(--primary);
-        font-size: 1.4rem;
-        margin-bottom: 18px;
+        border-radius: 14px;
+        background: rgba(17,24,39,0.05);
+        margin-bottom: 16px;
+        font-weight: 700;
       }
 
       .feature-card h3 {
         margin: 0 0 10px;
         font-size: 1.35rem;
+        letter-spacing: -0.04em;
       }
 
       .feature-card p {
@@ -502,14 +535,17 @@
 
       .about-card {
         padding: 26px;
+        background: rgba(255,255,255,0.7);
+        border: 1px solid rgba(0,0,0,0.05);
+        border-radius: 28px;
       }
 
       .portrait {
-        min-height: 320px;
-        border-radius: 18px;
+        min-height: 330px;
+        border-radius: 22px;
         background:
-          linear-gradient(135deg, rgba(125, 211, 252, 0.2), rgba(167, 139, 250, 0.18)),
-          linear-gradient(180deg, rgba(16, 28, 46, 0.5), rgba(12, 19, 30, 0.85));
+          linear-gradient(135deg, rgba(10,132,255,0.15), rgba(122,110,252,0.18)),
+          linear-gradient(180deg, rgba(17,24,39,0.12), rgba(17,24,39,0.8));
         position: relative;
         overflow: hidden;
       }
@@ -517,13 +553,13 @@
       .portrait::before {
         content: "";
         position: absolute;
-        width: 210px;
-        height: 210px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.08);
-        top: 50px;
+        width: 200px;
+        height: 200px;
+        top: 44px;
         left: 50%;
         transform: translateX(-50%);
+        border-radius: 50%;
+        background: rgba(255,255,255,0.08);
       }
 
       .portrait::after {
@@ -535,7 +571,7 @@
         font-size: clamp(3rem, 6vw, 5rem);
         font-weight: 800;
         letter-spacing: -0.08em;
-        color: rgba(236, 243, 255, 0.8);
+        color: rgba(255,255,255,0.78);
       }
 
       .about-copy h3 {
@@ -562,13 +598,12 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        color: var(--text);
       }
 
       .about-points li::before {
         content: "•";
         color: var(--primary);
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         line-height: 1;
       }
 
@@ -577,20 +612,20 @@
       }
 
       .cta-inner {
-        padding: 32px 26px;
-        border-radius: 28px;
-        border: 1px solid rgba(125, 211, 252, 0.2);
-        background: linear-gradient(135deg, rgba(125, 211, 252, 0.08), rgba(167, 139, 250, 0.08));
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 18px;
+        padding: 32px 26px;
+        border-radius: 30px;
+        border: 1px solid rgba(0,0,0,0.05);
+        background: linear-gradient(135deg, rgba(240,244,248,0.9), rgba(255,255,255,0.82));
       }
 
       .cta-inner h3 {
         margin: 0;
-        font-size: clamp(1.8rem, 3vw, 2.8rem);
-        letter-spacing: -0.04em;
+        font-size: clamp(1.8rem, 3vw, 3rem);
+        letter-spacing: -0.06em;
       }
 
       .cta-inner p {
@@ -599,9 +634,9 @@
       }
 
       footer {
-        border-top: 1px solid var(--line);
-        color: var(--muted);
+        border-top: 1px solid rgba(0,0,0,0.05);
         padding: 20px 0 48px;
+        color: var(--muted);
       }
 
       .footer-row {
@@ -632,15 +667,15 @@
         .nav {
           flex-wrap: wrap;
           justify-content: center;
-          gap: 10px;
-          padding: 16px 0;
+          gap: 12px;
+          padding: 12px 0;
         }
 
         .nav-links {
           width: 100%;
           justify-content: center;
+          gap: 12px 18px;
           flex-wrap: wrap;
-          gap: 12px 20px;
         }
 
         .hero {
@@ -682,8 +717,7 @@
               that feel clear, human, and memorable.
             </h1>
             <p class="lead">
-              I’m a multidisciplinary designer and developer helping startups, founders,
-              and teams turn ambitious ideas into polished products that people genuinely enjoy using.
+              I’m a multidisciplinary designer and developer helping founders and teams turn ambitious ideas into polished products that feel premium and effortless to use.
             </p>
 
             <div class="actions">
@@ -698,47 +732,48 @@
             </div>
           </div>
 
-          <div class="hero-panel" aria-label="Profile overview">
-            <div class="panel-shell">
-              <div class="window-bar" aria-hidden="true">
-                <span></span><span></span><span></span>
+          <div class="hero-visual" aria-label="Profile overview">
+            <div class="device-shell">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
               </div>
 
-              <div class="profile-card">
-                <div class="profile-top">
-                  <div class="avatar">TL</div>
-                  <span class="availability">Open to work</span>
-                </div>
+              <div class="screen">
+                <div class="screen-inner">
+                  <span class="product-pill">Product studio</span>
 
-                <h3>Product Designer + Front-End Developer</h3>
-                <p>
-                  Crafting thoughtful user journeys, clean interfaces, and scalable front-end systems
-                  with a focus on clarity and conversion.
-                </p>
+                  <div class="product-card">
+                    <div class="product-top">
+                      <h3>SemApp</h3>
+                      <span>2026</span>
+                    </div>
 
-                <div class="tag-list">
-                  <span class="tag">UX Strategy</span>
-                  <span class="tag">Brand Systems</span>
-                  <span class="tag">Web Design</span>
-                  <span class="tag">Front-End</span>
+                    <div class="mini-grid">
+                      <div class="mini-card"></div>
+                      <div class="mini-card"></div>
+                    </div>
+                  </div>
+
+                  <div class="stats">
+                    <div class="stat">
+                      <strong>1.2k</strong>
+                      <span>Users</span>
+                    </div>
+                    <div class="stat">
+                      <strong>99.9%</strong>
+                      <span>Uptime</span>
+                    </div>
+                    <div class="stat">
+                      <strong>2.3s</strong>
+                      <span>Load</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div class="container stats" aria-label="Key statistics">
-          <div class="stat">
-            <strong>6+</strong>
-            <span>Years crafting interfaces</span>
-          </div>
-          <div class="stat">
-            <strong>24</strong>
-            <span>Projects launched</span>
-          </div>
-          <div class="stat">
-            <strong>12</strong>
-            <span>Brands elevated</span>
           </div>
         </div>
       </section>
@@ -766,6 +801,7 @@
                   <p>
                     A modern web application built with Next.js, powered by Supabase, and deployed on Vercel for a fast, scalable product experience.
                   </p>
+                  <span class="project-link">Open project</span>
                 </div>
               </a>
             </article>
@@ -782,6 +818,7 @@
                   <p>
                     Reimagined a portfolio platform for a growing advisory brand with stronger positioning, clearer storytelling, and direct conversion points.
                   </p>
+                  <span class="project-link">Open project</span>
                 </div>
               </a>
             </article>
@@ -798,6 +835,7 @@
                   <p>
                     Designed a dashboard experience that simplified reporting workflows and made data more actionable for busy teams.
                   </p>
+                  <span class="project-link">Open project</span>
                 </div>
               </a>
             </article>
@@ -814,6 +852,7 @@
                   <p>
                     Built a scalable marketing site and product narrative around an AI-powered wellness concept from initial concept to launch.
                   </p>
+                  <span class="project-link">Open project</span>
                 </div>
               </a>
             </article>
